@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><title>Catalog</title><link rel="preconnect" href="https://fonts.googleapis.com"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"><link href="/css/app.9e121ac7.css" rel="preload" as="style"><link href="/js/app.2b3051f7.js" rel="preload" as="script"><link href="/js/chunk-vendors.fa3aaac0.js" rel="preload" as="script"><link href="/css/app.9e121ac7.css" rel="stylesheet"></head><body><div id="app"></div><script src="/js/chunk-vendors.fa3aaac0.js"></script><script src="/js/app.2b3051f7.js"></script></body><footer class="footer"><div class="footer_inner"><div class="container"><div class="row"><div class="col-12 col-md-4"><div class="row"><div class="col-12"><img class="footer_logo" src="../assets/images/top_logo.svg" alt="Golden Cash"><div class="footer_lang_holder"><a href="/en/" class="">En</a> <a href="/ru/" class="">Ru</a> <a href="/es/" class="">Es</a> <a href="/tr/" class="">Tr</a> <a href="/id/" class="">Id</a></div><div class="footer_theme_holder"><div class="dark">Dark</div><div class="white">White</div></div></div></div></div><div class="col-12 col-md-8"><div class="row"><div class="col-12 col-md-6 col-lg-3"><ul><li>Navigation</li><li><a href="">Mücevherat</a></li><li><a href="">Golden Back programı</a></li><li><a href="">Şirket hakkında</a></li><li><a href="">Dükkanlar</a></li><li><a href="">Haberler</a></li></ul></div><div class="col-12 col-md-6 col-lg-3"><ul><li>Kategoriler</li><li><a href="">Yüzükler</a></li><li><a href="">Küpeler</a></li><li><a href="">Bilezikler</a></li><li><a href="">Zincirler</a></li><li><a href="">Kolye</a></li><li><a href="">Aksesuarlar</a></li><li><a href="">Kartlar</a></li></ul></div><div class="col-12 col-md-6 col-lg-3"><ul><li>Contacts</li><li><a href="">+9 (999) 999 99 99</a></li><li><a href="">Instagram</a></li><li><a href="">Facebook</a></li><li><a href=""></a></li><li><a href=""></a></li><li><a href=""></a></li></ul></div><div class="col-12 col-md-6 col-lg-3"><ul><li><a class="footer_login" href="">Profilim &nbsp;&nbsp;&nbsp; <img src="../assets/images/user.svg" alt="Golden Cash"></a></li></ul></div></div></div></div><div class="row"><div class="col"><div class="copyright">All rights reserved - 2021 ©Golden Cash</div></div></div></div></div></footer><script src="../assets/js/jquery-3.6.0.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/bootstrap.bundle.min.js"></script><script src="../assets/js/slick.js" charset="utf-8"></script><script src="../assets/js/wow.min.js"></script><script src="../assets/js/jquery-ui.min.js"></script><script src="../assets/js/jquery.ui.touch-punch.min.js"></script><script>new WOW().init();</script><script>// aside
+  $('.aside_open').on('click', function () {
+    $('.aside').toggleClass('open');
+  });
+  $('.aside_bg').on('click', function () {
+    $('.aside.open').removeClass('open');
+  });</script><script>// cart-all
+  $('.cart_btn').on('click', function () {
+    $('.all_bag_holder ').toggleClass('open');
+  });
+  $('.cont_btn').on('click', function () {
+    $('.all_bag_holder ').toggleClass('open');
+  });</script><script>// filte goods
+  $('.cata_filter_holder_close_btn ').on('click', function () {
+    $('.cata_filter_holder').toggleClass('active');
+  });
+  /*$('.aside_bg').on('click', function(){
+      $('.aside.open').removeClass('active');
+  });*/</script><script>$(".polzunok-5").slider({
+    min: 0,
+    max: 5000,
+    values: [0, 5000],
+    range: true,
+    animate: "fast",
+    slide: function (event, ui) {
+      $(".polzunok-input-5-left").val(ui.values[0]);
+      $(".polzunok-input-5-right").val(ui.values[1]);
+    }
+  });
+  $(".polzunok-input-5-left").val($(".polzunok-5").slider("values", 0));
+  $(".polzunok-input-5-right").val($(".polzunok-5").slider("values", 1));
+  $(".polzunok-container-5 input").change(function () {
+    var input_left = $(".polzunok-input-5-left").val().replace(/[^0-9]/g, ''),
+      opt_left = $(".polzunok-5").slider("option", "min"),
+      where_right = $(".polzunok-5").slider("values", 1),
+      input_right = $(".polzunok-input-5-right").val().replace(/[^0-9]/g, ''),
+      opt_right = $(".polzunok-5").slider("option", "max"),
+      where_left = $(".polzunok-5").slider("values", 0);
+    if (input_left > where_right) {
+      input_left = where_right;
+    }
+    if (input_left < opt_left) {
+      input_left = opt_left;
+    }
+    if (input_left == "") {
+      input_left = 0;
+    }
+    if (input_right < where_left) {
+      input_right = where_left;
+    }
+    if (input_right > opt_right) {
+      input_right = opt_right;
+    }
+    if (input_right == "") {
+      input_right = 0;
+    }
+    $(".polzunok-input-5-left").val(input_left);
+    $(".polzunok-input-5-right").val(input_right);
+    if (input_left != where_left) {
+      $(".polzunok-5").slider("values", 0, input_left);
+    }
+    if (input_right != where_right) {
+      $(".polzunok-5").slider("values", 1, input_right);
+    }
+  });</script><script>$(document).ready(function () {
+    $('.down').click(function () {
+      var $input = $(this).parent().find('input');
+      var count = parseInt($input.val()) - 1;
+      count = count < 1 ? 1 : count;
+      $input.val(count);
+      $input.change();
+      return false;
+    });
+    $('.up').click(function () {
+      var $input = $(this).parent().find('input');
+      $input.val(parseInt($input.val()) + 1);
+      $input.change();
+      return false;
+    });
+  });</script></html>
