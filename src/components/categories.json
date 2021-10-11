@@ -1,0 +1,44 @@
+[
+        {
+            "categories_id": "1",
+            "alias": "ring",
+            "position": "0",
+            "ownerEl": "0",
+            "image": ""
+        },
+        {
+            "categories_id": "2",
+            "alias": "earrings",
+            "position": "0",
+            "ownerEl": "0",
+            "image": ""
+        },
+        {
+            "categories_id": "3",
+            "alias": "bracelets",
+            "position": "0",
+            "ownerEl": "0",
+            "image": ""
+        },
+        {
+            "categories_id": "4",
+            "alias": "chains",
+            "position": "0",
+            "ownerEl": "0",
+            "image": ""
+        },
+        {
+            "categories_id": "5",
+            "alias": "necklace",
+            "position": "0",
+            "ownerEl": "0",
+            "image": ""
+        },
+        {
+            "categories_id": "6",
+            "alias": "accessories",
+            "position": "0",
+            "ownerEl": "0",
+            "image": ""
+        }
+    ]

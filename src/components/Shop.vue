@@ -20,169 +20,48 @@
                   </div>
                 </div>
                 <div class="filter__title">Country</div>
-                <div class="cats__holder">
-                  <label for="country__1">
-                    <input
-                      class="checkbox__real"
-                      id="country__1"
-                      type="radio"
-                      name="choice_material"
-                      checked
-                    />
-                    <span class="checkbox__fake"></span>
-                    Turkey
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="country__2">
-                    <input
-                      class="checkbox__real"
-                      id="country__2"
-                      type="radio"
-                      name="choice_material"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Uzbekistan
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="country__3">
-                    <input
-                      class="checkbox__real"
-                      id="country__3"
-                      type="radio"
-                      name="choice_material"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Tajikistan
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="country__4">
-                    <input
-                      class="checkbox__real"
-                      id="country__4"
-                      type="radio"
-                      name="choice_material"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Kyrgyzstan
-                  </label>
-                </div>
 
+                <!-- countries V-FOR start -->
+                <div
+                  v-for="(country, index) in countries"
+                  :key="'country' + index"
+                  class="cats__holder"
+                >
+                  <label :for="'country__' + country.id">
+                    <input
+                      class="checkbox__real"
+                      :id="'country__' + country.id"
+                      type="radio"
+                      name="choice_country"
+                    />
+                    <span class="checkbox__fake"></span>
+                    {{ country.name }}
+                  </label>
+                </div>
+                <!-- countries V-FOR end -->
+
+                <!-- categories V-FOR start -->
                 <div class="filter__title">Category</div>
-                <div class="cats__holder">
-                  <label for="cat__1">
+                <div
+                  v-for="(category, index) in categories"
+                  :key="'category_' + index"
+                  class="cats__holder"
+                >
+                  <label :for="'cat__' + category.categories_id">
                     <input
                       class="checkbox__real"
-                      id="cat__1"
+                      :id="'cat__' + category.categories_id"
                       type="radio"
                       name="choice_cat"
+                      :value="category.categories_id"
                     />
                     <span class="checkbox__fake"></span>
-                    Ring
+                    {{ category.alias }}
                   </label>
                 </div>
-                <div class="cats__holder">
-                  <label for="cat__2">
-                    <input
-                      class="checkbox__real"
-                      id="cat__2"
-                      type="radio"
-                      name="choice_cat"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Earrings
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="cat__3">
-                    <input
-                      class="checkbox__real"
-                      id="cat__3"
-                      type="radio"
-                      name="choice_cat"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Bracelets
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="cat__4">
-                    <input
-                      class="checkbox__real"
-                      id="cat__4"
-                      type="radio"
-                      name="choice_cat"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Chains
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="cat__5">
-                    <input
-                      class="checkbox__real"
-                      id="cat__5"
-                      type="radio"
-                      name="choice_cat"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Necklace
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="cat__6">
-                    <input
-                      class="checkbox__real"
-                      id="cat__6"
-                      type="radio"
-                      name="choice_cat"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Accessories
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="cat__7">
-                    <input
-                      class="checkbox__real"
-                      id="cat__7"
-                      type="radio"
-                      name="choice_cat"
-                    />
-                    <span class="checkbox__fake"></span>
-                    Cards
-                  </label>
-                </div>
-                <div class="cats__holder">
-                  <label for="cat__8">
-                    <input
-                      class="checkbox__real"
-                      id="cat__8"
-                      type="radio"
-                      name="choice_cat"
-                      checked
-                    />
-                    <span class="checkbox__fake"></span>
-                    All
-                  </label>
-                </div>
+                <!-- categories V-FOR end -->
 
-                <div class="filter__title">Price</div>
-                <div class="polzunok-container-5">
-                  <div class="polzunok-5"></div>
-                  <div class="inputs_holder">
-                    <input
-                      type="text"
-                      class="polzunok-input-5-left"
-                      onkeydown="this.style.width = ((this.value.length + 1) * 8) + 'px';"
-                    />
-                    -
-                    <input type="text" class="polzunok-input-5-right" />
-                  </div>
-                </div>
-                <button type="submit" class="gold_line_btn">Show</button>
+                <!-- <button type="submit" class="gold_line_btn">Show</button> -->
               </form>
             </div>
           </div>
@@ -200,7 +79,7 @@
               </a>
             </div>
             <div
-              v-for="(goodsItem, index) in filterBy(goods, 'cat_geo', '2')"
+              v-for="(goodsItem, index) in filterBy(goods1, '5', 'cat_type')"
               :key="'goods_' + index"
               class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb100"
             >
@@ -262,6 +141,7 @@
 // 7	cards
 
 import catalog from "./catalog.json";
+import categories from "./categories.json";
 import Vue2Filters from "vue2-filters";
 export default {
   mixins: [Vue2Filters.mixin],
@@ -269,9 +149,24 @@ export default {
     return {
       filterCountry: "",
       filterCat: "",
-      maskCata: { 1: "ring", 2: "ear" },
-      goods2: catalog,
-      goods: [
+      maskCata: {
+        1: "Ring",
+        2: "Ear",
+        3: "Bracelets",
+        4: "Chains",
+        5: "Necklace",
+        6: "Accessories",
+      },
+      countries: [
+        { id: 1, name: "Turkey" },
+        { id: 2, name: "Uzbekistan" },
+        { id: 3, name: "Kyrgyzstan" },
+        { id: 4, name: "Tajikistan" },
+        { id: 5, name: "Kazakhstan" },
+      ],
+      categories: categories,
+      goods: catalog,
+      goods1: [
         {
           catalog_id: "1295",
           cat_image: "Uzb_ring_B28_8.1gr_1-85$_fianit_16-19.5",
@@ -471,7 +366,7 @@ export default {
           cat_urlname: "",
           cat_content: "16-19,5",
           cat_spec: "10,1",
-          cat_type: "1",
+          cat_type: "5",
           cat_price: "859",
           cat_code: "b36",
           cat_order: "0",
@@ -714,3 +609,9 @@ export default {
   },
 };
 </script>
+
+<style >
+.catalog .cats__holder label {
+  text-transform: capitalize;
+}
+</style>
