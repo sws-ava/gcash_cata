@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-12">
             <div class="cata_filter_holder">
-              <form @change="filterCata()" id="form_filter" action="">
+              <form  id="form_filter" action="">
                 <div class="cata_filter_holder_close_btn d-block d-lg-none">
                   <div class="menu_x_btn">
                     <span></span>
@@ -33,6 +33,7 @@
                       :id="'country__' + country.id"
                       type="radio"
                       name="choice_country"
+                      @click="filterCountry=country.id"
                     />
                     <span class="checkbox__fake"></span>
                     {{ country.name }}
@@ -54,6 +55,7 @@
                       type="radio"
                       name="choice_cat"
                       :value="category.categories_id"
+                      @click="filterCat=category.categories_id"
                     />
                     <span class="checkbox__fake"></span>
                     {{ category.alias }}
@@ -79,7 +81,7 @@
               </a>
             </div>
             <div
-              v-for="(goodsItem, index) in filterBy(goods1, '5', 'cat_type')"
+              v-for="(goodsItem,index) in filterCata"
               :key="'goods_' + index"
               class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb100"
             >
@@ -145,6 +147,20 @@ import categories from "./categories.json";
 import Vue2Filters from "vue2-filters";
 export default {
   mixins: [Vue2Filters.mixin],
+  computed:{
+    filterCata () {
+      if(this.filterCountry!=="" && this.filterCat!==""){
+        return this.filterBy(this.filterBy(this.goods1, this.filterCountry, 'cat_geo'), this.filterCat, 'cat_type');
+      }else if(this.filterCountry!=="" ){
+        return this.filterBy(this.goods1, this.filterCountry, 'cat_geo');
+      }else if(this.filterCat!=="" ){
+        return this.filterBy(this.goods1, this.filterCat, 'cat_type');
+      }
+      else{
+        return this.goods1
+      }
+    },
+  },
   data() {
     return {
       filterCountry: "",
@@ -181,7 +197,7 @@ export default {
           cat_hide: "0",
           cat_material: "1",
           cat_stone: "fianit",
-          cat_geo: "2",
+          cat_geo: "1",
           cat_currency: "",
           cat_itemtype: "",
           cat_available: "",
@@ -603,9 +619,7 @@ export default {
     };
   },
   methods: {
-    filterCata() {
-      console.log("1");
-    },
+
   },
 };
 </script>
