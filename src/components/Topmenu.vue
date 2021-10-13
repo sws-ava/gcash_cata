@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="all_bag_holder">
     <div class="bag bag_aside">
       <div class="all_items_holder">
@@ -186,6 +187,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

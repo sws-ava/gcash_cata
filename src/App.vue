@@ -1,7 +1,7 @@
 <template>
-  <Inf />
+  <!--<Inf />-->
   <!-- <Topmenu /> -->
-  <!-- <Shop /> -->
+   <Shop />
 </template>
 
 <script>
