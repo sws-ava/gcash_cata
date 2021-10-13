@@ -1,13 +1,15 @@
 <template>
-  <Topmenu />
-  <Shop />
+  <Inf />
+  <!-- <Topmenu /> -->
+  <!-- <Shop /> -->
 </template>
 
 <script>
 import Shop from "@/components/Shop";
 import Topmenu from "@/components/Topmenu.vue";
+import Inf from "@/components/Inf.vue";
 export default {
-  components: { Shop, Topmenu },
+  components: { Shop, Topmenu, Inf },
 };
 </script>
 

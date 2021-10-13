@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-12">
             <div class="cata_filter_holder">
-              <form  id="form_filter" action="">
+              <form id="form_filter" action="">
                 <div class="cata_filter_holder_close_btn d-block d-lg-none">
                   <div class="menu_x_btn">
                     <span></span>
@@ -33,7 +33,7 @@
                       :id="'country__' + country.id"
                       type="radio"
                       name="choice_country"
-                      @click="filterCountry=country.id"
+                      @click="filterCountry = country.id"
                     />
                     <span class="checkbox__fake"></span>
                     {{ country.name }}
@@ -55,7 +55,7 @@
                       type="radio"
                       name="choice_cat"
                       :value="category.categories_id"
-                      @click="filterCat=category.categories_id"
+                      @click="filterCat = category.categories_id"
                     />
                     <span class="checkbox__fake"></span>
                     {{ category.alias }}
@@ -74,6 +74,11 @@
           <div class="row">
             <div class="col-12 d-block d-lg-none">
               <a
+                style="
+                  width: -webkit-fit-content;
+                  width: -moz-fit-content;
+                  width: fit-content;
+                "
                 href="#form_filter"
                 class="gold_line_btn cata_filter_holder_close_btn mb-4"
               >
@@ -81,7 +86,7 @@
               </a>
             </div>
             <div
-              v-for="(goodsItem,index) in filterCata"
+              v-for="(goodsItem, index) in filterCata"
               :key="'goods_' + index"
               class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb100"
             >
@@ -107,7 +112,7 @@
                     </div>
                   </div>
                   <div class="cata_item__brand">
-                    {{ goodsItem.cat_code }} - {{ goodsItem.catalog_id }}
+                    {{ goodsItem.cat_code }} {{ goodsItem.catalog_id }}
                   </div>
                   Add to card &nbsp;&nbsp;&nbsp;
                   <img class="" src="../assets/images/right_arrow.svg" alt="" />
@@ -147,18 +152,17 @@ import categories from "./categories.json";
 import Vue2Filters from "vue2-filters";
 export default {
   mixins: [Vue2Filters.mixin],
-  computed:{
-    filterCata () {
-      if(this.filterCountry!=="" && this.filterCat!==""){
-        return this.filterBy(this.filterBy(this.goods1, this.filterCountry, 'cat_geo'), this.filterCat, 'cat_type');
-      }else if(this.filterCountry!=="" ){
-        return this.filterBy(this.goods1, this.filterCountry, 'cat_geo');
-      }else if(this.filterCat!=="" ){
-        return this.filterBy(this.goods1, this.filterCat, 'cat_type');
-      }
-      else{
-        return this.goods1
-      }
+  computed: {
+    filterCata() {
+      return this.limitBy(
+        this.filterBy(
+          this.filterBy(this.goods, this.filterCountry, "cat_geo"),
+          this.filterCat,
+          "cat_type"
+        ),
+        12, // limit
+        0 // offset
+      );
     },
   },
   data() {
@@ -167,7 +171,7 @@ export default {
       filterCat: "",
       maskCata: {
         1: "Ring",
-        2: "Ear",
+        2: "Earrings",
         3: "Bracelets",
         4: "Chains",
         5: "Necklace",
@@ -176,7 +180,7 @@ export default {
       countries: [
         { id: 1, name: "Turkey" },
         { id: 2, name: "Uzbekistan" },
-        { id: 3, name: "Kyrgyzstan" },
+        //{ id: 3, name: "Kyrgyzstan" },
         { id: 4, name: "Tajikistan" },
         { id: 5, name: "Kazakhstan" },
       ],
@@ -618,9 +622,7 @@ export default {
       ],
     };
   },
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
